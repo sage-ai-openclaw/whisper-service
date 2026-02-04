@@ -92,6 +92,26 @@ First build downloads large-v3 model (~3GB) and takes several minutes.
 - Port 5555, Tailscale-only access
 - No authentication (Tailscale network is trusted)
 
+## Sage Control Integration
+
+Voice input has been integrated into Sage Control:
+
+1. **Mic button** in message input (🎤)
+2. **Recording indicator** with duration timer
+3. **Auto-transcription** via this service
+4. **Settings panel** (`⌘K` → Settings):
+   - Auto-send toggle (default: on)
+   - Whisper service URL configuration
+   - Connection test button
+
+### Usage
+
+1. Click the mic button to start recording
+2. Click again to stop and transcribe
+3. If auto-send is on: message sends immediately
+4. If auto-send is off: transcript appears in input for editing
+
 ---
 
 *Created: February 4, 2026*
+*Updated: February 4, 2026 — Frontend integration complete*
