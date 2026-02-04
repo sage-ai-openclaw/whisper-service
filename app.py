@@ -9,6 +9,7 @@ import time
 from pathlib import Path
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from faster_whisper import WhisperModel
 
@@ -17,6 +18,15 @@ app = FastAPI(
     title="Whisper Service",
     description="GPU-accelerated speech-to-text API",
     version="1.0.0"
+)
+
+# Enable CORS for all origins (Tailscale network is trusted)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Global model instance (loaded once at startup)
