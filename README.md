@@ -2,6 +2,43 @@
 
 GPU-accelerated speech-to-text API using [faster-whisper](https://github.com/SYSTRAN/faster-whisper) with the `large-v3` model.
 
+## Installation on TrueNAS Scale
+
+### Option A: Custom App (Recommended)
+
+1. Go to **Apps** → **Discover Apps** → **Custom App**
+2. Fill in the form:
+
+| Field | Value |
+|-------|-------|
+| **Application Name** | `whisper-service` |
+| **Image Repository** | `ghcr.io/sage-ai-openclaw/whisper-service` |
+| **Image Tag** | `latest` |
+
+3. Under **Container Settings**:
+   - No extra environment variables needed
+
+4. Under **Networking**:
+   - Add port: **Host Port** `5555` → **Container Port** `5555` (TCP)
+
+5. Under **Resources Configuration** → **GPU Configuration**:
+   - Enable **Passthrough available (non-NVIDIA) GPUs**
+   - Or if NVIDIA option shows: Select your **RTX 3090**
+
+6. Click **Install**
+
+First start takes 1-2 minutes (model loading). Check logs in the Apps UI.
+
+### Option B: Docker Compose (CLI)
+
+```bash
+git clone https://github.com/sage-ai-openclaw/whisper-service.git
+cd whisper-service
+docker compose up -d --build
+```
+
+---
+
 ## Features
 
 - 🚀 GPU acceleration (NVIDIA CUDA)
