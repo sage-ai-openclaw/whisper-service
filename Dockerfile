@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.11-venv \
     python3-pip \
     ffmpeg \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Use python3.11 as default
